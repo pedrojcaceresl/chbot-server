@@ -11,6 +11,9 @@ const config = {
 	SHOPIFY_ACCESS_TOKEN: process.env.SHOPIFY_ACCESS_TOKEN,
 	SHOPIFY_STORE_NAME: process.env.SHOPIFY_STORE_NAME,
 	FAKE_STORE_API_URL: "https://fakestoreapi.com",
+	TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
+	TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
+	SANDBOX_NUMBER: process.env.SANDBOX_NUMBER,
 };
 
 
