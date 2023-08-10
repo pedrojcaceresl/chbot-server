@@ -4,10 +4,11 @@ const { HTTP_STATUSES } = require("../shared/constants");
 
 const { client } = require("../config/shopifyConfig");
 
-const getShopifyProducts = async (req, res) => {
+// Devuelve el conjunto de productos categorizados (trae productos y categorias)
+const getShopifyCollect = async (req, res) => {
   try {
     const data = await client.get({
-      path: `products`,
+      path: `collects`,
     });
 
     handleSuccessResponse({
@@ -16,14 +17,15 @@ const getShopifyProducts = async (req, res) => {
       data,
     });
   } catch (error) {
-    handleErrorResponse(error, req, res);
+    handleErrorResponse( error, req, res)
   }
 };
 
-const getShopifyProdById = async (req, res) => {
+// Devuelve una categoria por su id especifico
+const getShopifyCollectionsById = async (req, res) => {
   try {
     const data = await client.get({
-      path: `products/${req.params.id}`,
+      path: `collections/${req.params.id}`,
     });
 
     handleSuccessResponse({
@@ -32,11 +34,11 @@ const getShopifyProdById = async (req, res) => {
       data,
     });
   } catch (error) {
-    handleErrorResponse(error, req, res);
+    handleErrorResponse( error, req, res)
   }
 };
 
 module.exports = {
-  getShopifyProducts,
-  getShopifyProdById,
+  getShopifyCollect,
+  getShopifyCollectionsById,
 };
