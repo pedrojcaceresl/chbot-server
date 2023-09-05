@@ -3,6 +3,7 @@ const { handleSuccessResponse, handleErrorResponse } = require("../shared/helper
 const { HTTP_STATUSES } = require("../shared/constants");
 
 const { client } = require("../config/shopifyConfig");
+const CollectsModel = require("../models/collects.model");
 
 // Devuelve el conjunto de productos categorizados (trae productos y categorias)
 const getShopifyCollect = async (req, res) => {
@@ -10,6 +11,19 @@ const getShopifyCollect = async (req, res) => {
     const data = await client.get({
       path: `collects`,
     });
+
+    const collects = data.body.collects.map(async collect => {
+      const { id, collection_id, product_id } =  collect
+      console.log({id, collection_id, product_id });
+      
+      //  await CollectsModel.create({
+      //   idCollects: id, 
+      //   collectionId: collection_id,
+      //   productsId: product_id
+      // })
+      
+    });
+
 
     handleSuccessResponse({
       res,
