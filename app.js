@@ -3,6 +3,9 @@ const corsOptions = require("./src/config/cors");
 const app = express();
 const cors = require("cors");
 
+const dbConnection = require('./src/config/dbConfig')
+
+dbConnection();
 
 app.use(express.json())
 	.use(cors(corsOptions))
