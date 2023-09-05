@@ -6,6 +6,7 @@ require("@shopify/shopify-api/adapters/node");
 const shopify = shopifyApi({
 	apiKey: SHOPIFY_API_KEY,
 	apiSecretKey: SHOPIFY_API_SECRET,
+	adminApiAccessToken: SHOPIFY_ACCESS_TOKEN,
 	apiVersion: LATEST_API_VERSION,
 	hostName: "localhost:3200",
 	scopes: [
