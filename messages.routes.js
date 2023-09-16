@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { sendWhatsappMessage } = require("../whatsapp/whatsapp");
+const { sendWhatsappMessage } = require("./src/whatsapp/whatsapp");
 const router = Router();
 
 router.post("/", sendWhatsappMessage);
