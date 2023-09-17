@@ -6,7 +6,7 @@ const { client } = require("../config/shopifyConfig");
 const customCollectionsModel = require("../models/custom-collections.model");
 
 // Devuelve el conjunto de categorias personalizadas
-const getShopifyCustomCollections = async (req, res) => {
+const syncShopifyCustomCollections = async (req, res) => {
   try {
     const data = await client.get({
       path: `custom_collections`,
@@ -38,6 +38,13 @@ const getShopifyCustomCollections = async (req, res) => {
   }
 };
 
+const getCollection = async (req, res) => {
+  const data = await customCollectionsModel.find();
+  console.log({data});
+  return res.json(data)
+}
+
 module.exports = {
-  getShopifyCustomCollections,
+  // syncShopifyCustomCollections
+  getCollection
 };
