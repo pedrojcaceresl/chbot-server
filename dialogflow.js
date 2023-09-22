@@ -40,7 +40,20 @@ async function sendToDialogFlow(msg, session, source, params) {
     };
     const responses = await sessionClient.detectIntent(request);
     const result = responses[0].queryResult;
-    console.log("INTENT EMPAREJADO: ", result.intent.displayName);
+    console.log("INTENT EMPAREJADO: ", {
+      intent: result.intent.displayName,
+      resultIntent: result.intent
+    });
+
+    switch (result.intent.displayName) {
+		case "PedidoSimple.action":
+			break;
+		case "PedidoSimple.action":
+			break;
+    default:
+      console.log("Ejecutar default fallback intent");
+	}
+
     let defaultResponses = [];
     if (result.action !== "input.unknown") {
       result.fulfillmentMessages.forEach((element) => {
@@ -57,9 +70,7 @@ async function sendToDialogFlow(msg, session, source, params) {
       });
     }
     result.fulfillmentMessages = defaultResponses;
-    console.log(JSON.stringify(result, null, " "));
     return result;
-    // console.log("se enviara el resultado: ", result);
   } catch (e) {
     console.log("error");
     console.log(e);
